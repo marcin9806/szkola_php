@@ -15,12 +15,26 @@
             <input type="password" name="pass">Hasło<br>
             <input type="submit">
         </form>-->
-        <form method="get" action="dane.php">
+        <form method="get">
             <input type="radio" name="kolor" value="bialy">Biały<br>
             <input type="radio" name="kolor" value="czarny">Czarny<br>
             <input type="radio" name="kolor" value="zielony">Zielony<br>
             <input type="radio" name="kolor" value="czerwony">Czerwony<br>
-            <input type="submit" value="Wyślij">
+            <input type="submit" value="Wyślij" name="przycisk">
         </form>
+
+        <?php
+            if(isset($_GET['przycisk']))
+            {
+                if(isset($_GET['kolor']))
+                {
+                    echo $_GET['kolor'];
+                }
+                else
+                {
+                    echo "Nie wybrales koloru";
+                }
+            }
+        ?>
     </body>
 </html>
