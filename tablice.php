@@ -114,4 +114,45 @@ foreach($tab2 as $x){
     echo $x." ";
 }
 echo "<br>";
+
+//********************************************************************************************
+//Sortowanie tablicy asocjacyjnej
+
+$tabAsoc=array(
+    "imie"=>"andrzej",
+    "pseudonim"=>"endru",
+    "wiek"=>30,
+    "nazwisko"=>"kowal"
+);
+
+function wyswietl($tab){
+    foreach($tab as $x){
+        echo "$x ";
+    };
+    echo "<br>";
+}
+
+wyswietl($tabAsoc);
+
+//sortowanie wg wartosci
+asort($tabAsoc);
+wyswietl($tabAsoc);
+arsort($tabAsoc); //odwrotnie
+wyswietl($tabAsoc);
+echo gettype($tabAsoc["wiek"])."<br>";
+
+//sortowanie wg klucza
+ksort($tabAsoc);
+wyswietl($tabAsoc);
+krsort($tabAsoc); //odwrotnie
+wyswietl($tabAsoc);
+
+//wyswietlanie danych z tablicy
+var_dump($tabAsoc);
+echo "<br>";
+print_r($tabAsoc);
+echo "<br>";
+echo "<pre>";
+print_r($tabAsoc);
+echo "</pre><br>";
 ?>
