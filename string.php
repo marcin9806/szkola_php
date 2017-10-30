@@ -44,7 +44,7 @@ echo "<br>".strlen(rtrim($imie)); //"  Marian"
 $adres="Poznań, ul. Fredry 13, tel. (61) 445-44-58";
 $szukaj=strstr($adres,"tel.",false); //false - od "tel.", true - do "tel."
 echo "<br>$szukaj";
-$szukaj2=stristr($adres,"Tel",false); //nisensitive - nie zwraca uwagi na wielkość liter
+$szukaj2=stristr($adres,"Tel",false); //insensitive - nie zwraca uwagi na wielkość liter
 echo "<br>$szukaj2";
 
 $mail=strstr("grzes@o2.pl","@");
@@ -94,9 +94,22 @@ echo "$poprawnyLogin<br>";
 //cenzura
 
 
+
 //*****************************************
 //napisz funkcje ktora bedzie obliczala wystapienia okreslonego ciagu znakow w danym tekscie.
 //Tekst i szukany ciagh znakow powiny byc przekazywane w postaci argumentu.
+
+function zliczaj($tekst,$szukany)
+{
+    $i=0;
+    while(!(strpos($tekst,$szukany)===false))
+    {
+        //$szukany=str_replace($szukany,"",$tekst);
+        $szukany=substr($tekst,strpos($tekst,$szukany)+strlen($szukany),strlen($tekst)-strpos($tekst,$szukany)-strlen($szukany));
+        i++;
+    }
+    return i;
+}
 
 
 
