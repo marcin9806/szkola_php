@@ -98,17 +98,36 @@ echo "$poprawnyLogin<br>";
 //*****************************************
 //napisz funkcje ktora bedzie obliczala wystapienia okreslonego ciagu znakow w danym tekscie.
 //Tekst i szukany ciagh znakow powiny byc przekazywane w postaci argumentu.
-
+/*
 function zliczaj($tekst,$szukany)
 {
     $i=0;
     while(!(strpos($tekst,$szukany)===false))
     {
-        //$szukany=str_replace($szukany,"",$tekst);
         $szukany=substr($tekst,strpos($tekst,$szukany)+strlen($szukany),strlen($tekst)-strpos($tekst,$szukany)-strlen($szukany));
-        i++;
+        $i++;
     }
-    return i;
+    return $i;
+}
+
+
+echo zliczaj("123123123123333", "123");*/
+
+$formularz= <<< FORM
+    <form method="post">
+        <input type="text" name="dane"><br>
+        <input type="submit" value="Wyślij">
+    </form>
+FORM;
+
+echo $formularz;
+
+if(isset($_POST['dane'])){
+    $dane=$_POST['dane'];
+    $niedozwolone = array("polonez", "multipla", "bmw");
+    $zamiana = "*****";
+    $poprawne = str_ireplace($niedozwolone, $zamiana, $dane);
+    echo $poprawne;
 }
 
 
@@ -128,9 +147,4 @@ function zliczaj($tekst,$szukany)
 
 
 
-
-
-
 ?>
-
-
