@@ -1,0 +1,8 @@
+table,th,td,tr{
+    border: solid 1px gray;
+    border-collapse: collapse;
+}
+body{
+    background-color: #333;
+    color: white;
+}
