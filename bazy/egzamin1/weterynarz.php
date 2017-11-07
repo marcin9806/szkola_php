@@ -56,10 +56,16 @@ WIERSZ;
                 }
                 mysqli_close($polaczenie);
             ?>
-
         </div>
         <div id="prawy">
-
+            <h2>WETERYNARZ</h2>
+            <a href="logo.jpg"><img src="logo-mini.jpg"></a>
+            <p>Krzysztof Nowakowski, lekarz weterynarii</p>
+            <h2>GODZINY PRZYJĘĆ</h2>
+            <table>
+                <tr><td>Poniedziałek</td><td>15:00 - 19:00</td></tr>
+                <tr><td>Wtorek</td><td>15:00 - 19:00</td></tr>
+            </table>
         </div>
     </body>
 </html>
