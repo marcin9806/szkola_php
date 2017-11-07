@@ -47,10 +47,9 @@ WIERSZ;
                 if($rezultat=mysqli_query($polaczenie,$zapytanie)){
                     while($wiersz=mysqli_fetch_array($rezultat)){
                         echo <<<WIERSZ
-                        <p style="border-bottom: 1px solid black">
                         Pacjent: {$wiersz["imie"]}<br>
                         Telefon właściciela: {$wiersz["telefon"]}, ostatnie szczepienie: {$wiersz["szczepienie"]}, informacje: {$wiersz["opis"]}<br>
-                        </p>
+                        <hr>
 WIERSZ;
                     }
                 }
