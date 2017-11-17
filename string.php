@@ -1,133 +1,163 @@
 <?php
-    $text = <<<TEXT
-    ZSK - zespół
-    szkół
-    komunikacji
-TEXT;
 
-echo "Przed użyciem funkcji nl2br: <br> $text<br><br>";
-echo "Po użyciu funkcji nl2br: <br>";
-echo nl2br($text)."<br><br>";
+$text = <<<TEKST
+zsk - Zespół
+szkół
+komunikacji
+TEKST;
 
-//zamiana na małe litery:
-echo strtolower($text);
-echo "<br><br>";
+    echo "Przed uzyciem funkcji nl2br: <br> $text";
+    echo "<br><br>";
+    echo "Po uzyciu funkcji nl2br: <br> ";
+    echo nl2br($text);
+    echo "<br><br>";
 
-//zamiana na duże litery
-echo strtoupper($text);
-echo "<br><br>";
+// zmiana na male litery
+    echo strtolower($text);
+    echo "<br>";
 
-//zamioana pierwszej litery na dużą
-$tekst="rAZ DWA trzy";
-echo ucfirst($tekst);
-echo "<br><br>";
+//zmiana na duze litery
+    echo strtoupper($text);
+    echo "<br>";
 
-//zamiana wszystkich pierwszych liter na duże
-echo ucwords($tekst);
-echo "<br><br>";
+//zamiana pierwszej litery na duza
+     $tekst = "rAZ DWA trzy";
+    echo ucfirst($tekst);
+    echo "<br>";
+    echo "<br>";
 
+//zamiana wszystkich pierwszych liter na duze
+    echo ucwords($tekst);
+    //echo "<br>";
+    echo "<br>";
 
+$lorem ="Aut summis legam quae offendit, mandaremus iis occaecat. A fore ingeniis
+incurreret, quis quo quamquam iis quis, ubi se sunt laborum in ut eu
+comprehenderit. Enim vidisse nam aliquip et quid commodo arbitrantur quo ab ex
+illum anim elit, multos officia incididunt. Noster pariatur quo irure quae,
+pariatur multos irure quo quis. Culpa te quibusdam ea culpa, deserunt malis
+mandaremus senserit. Nostrud a irure appellat est eu et adipisicing ita litteris
+ex veniam arbitror, est eram eram est quibusdam. Fabulas an offendit, quo ea
+magna labore irure, senserit qui cupidatat quo de multos ubi minim, sed
+consequat adipisicing, veniam non offendit se sunt, e mandaremus praesentibus,
+ipsum cohaerescant consequat quorum incurreret.";
 
-$lorem="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.";
+    $kolumna = wordwrap($lorem,30, "<br>");
+    echo $kolumna;
 
-$kolumna=wordwrap($lorem,30, "<br>");
-echo $kolumna;
+//usuwanie bialych znakow
+$imie1 = "Marian";
+$imie = "  Marian ";
 
-$imie1="Marian";
-$imie="  Marian ";
+echo strlen($imie1); //6
+echo strlen($imie); //9
 
-echo "<br>".strlen(ltrim($imie)); //"Marian "
-echo "<br>".strlen(rtrim($imie)); //"  Marian"
+echo strlen(ltrim($imie)); //7
+echo strlen(trim($imie)); //6
+echo "<br>";
 
 //przeszukiwanie
 
-$adres="Poznań, ul. Fredry 13, tel. (61) 445-44-58";
-$szukaj=strstr($adres,"tel.",false); //false - od "tel.", true - do "tel."
-echo "<br>$szukaj";
-$szukaj2=stristr($adres,"Tel",false); //insensitive - nie zwraca uwagi na wielkość liter
-echo "<br>$szukaj2";
+$adres = "Poznań, ul. Fredry 13, tel. (61) 445-44-58";
+$szukaj = strstr($adres, "tel"); // wyszukanie podanej frazy w ciagu
+echo $adres;
+echo "<br><br>";
+echo $szukaj;
+echo "<br><br>";
 
-$mail=strstr("grzes@o2.pl","@");
-echo "<br>".$mail;
+$szukaj1 = strstr($adres, "tel", true);
+echo $szukaj1;
+echo "<br><br>";
 
-$mail1=strstr("grzes@gmail.pl",64);//ASCII - 64="@"
-echo "<br>".$mail1;
+$szukaj2 = stristr($adres, "TEL");
 
-$ciag1="a";
-$ciag2="aa";
-echo "<br>".strcmp($ciag1,$ciag2); //string compare: -1
-echo "<br>".strcmp("zzz","zza"); //string compare: 1
-echo "<br>".strcmp("zzz","zzz"); //string compare: 0
+echo $szukaj2, '<br>';
 
-$poz=strpos("abcdefg","cde");
-echo "<br>Pozycja \"cde\" w \"abcdefg\": ".$poz;
+$mail = strstr("grzes@o2.pl","@");
+echo $mail,"<br>";
 
-//**************************************************************************************
-//zad1
-$tekst1="abcdabcd";
-$tekst2="abc";
-if(strpos($tekst1,$tekst2)===false) echo "<br>Ciąg $tekst2 nie znajduje się w ciągu $tekst1.<br>";
-else echo "<br>Ciąg $tekst2 znajduje się w ciągu $tekst1 na pozycji ".strpos($tekst1,$tekst2);
-//trzeba użyć ===, bo == zwróci 0 i przekonwertuje to na false
+$mail1 = strstr("grzes@gmail.pl",64);
 
+echo $mail1;
+echo "<br> <br>";
+//@Gmail.pl
 
-//******************************************************************************
-//przetwarzanie ciągów znaków
+//*******************************************************************************
+$ciag1 = "a";
+$ciag2 = "aa";
 
-$zamien=str_replace("%imie%", "Janusz", "%imie% to nie imie, %imie% to styl zycia");
-echo "<br> $zamien <br>";
-//*******************************************
-$login="Łukasz Bąk";
-$cenzura=array(
-    "ą","ę","ć","ż","ź","ł","ń","ł","ś",
-    "Ą","Ę","Ć","Ż","Ź","Ł","Ń","Ł","Ś"
-);
-$zamiana=array(
-    "a","e","c","z","z","l","n","l","s",
-    "A","E","C","Z","Z","L","N","L","S"
-);
-$poprawnyLogin=str_replace($cenzura, $zamiana, $login);
-echo "$poprawnyLogin<br>";
+echo strcmp($ciag1,$ciag2),"<br>";//-1
+echo strcmp("zzz","zzz"),"<br>";//0
+echo strcmp("zza","zzz"),"<br>";//-1
+echo strcmp("zzc","zzb"),"<br>";// 1
+echo strcmp("zzca","zzc"),"<br>";// 1
 
-//*****************************************
-//napisz program ktory pozwoli cenzurowac zdanie podane przez uzytkownika w formularzu
-//cenzura
+//********************************************************************************
+$poz = strpos("abcdefg","cde");
+echo $poz; // znajduje index w stringu //2
+echo "<br> <br>";
 
+$poz1 = strpos('abcabc',"ab"); //0
+echo $poz1;
+echo "<br> <br>";
 
-
-//*****************************************
-//napisz funkcje ktora bedzie obliczala wystapienia okreslonego ciagu znakow w danym tekscie.
-//Tekst i szukany ciagh znakow powiny byc przekazywane w postaci argumentu.
-/*
-function zliczaj($tekst,$szukany)
-{
-    $i=0;
-    while(!(strpos($tekst,$szukany)===false))
-    {
-        $szukany=substr($tekst,strpos($tekst,$szukany)+strlen($szukany),strlen($tekst)-strpos($tekst,$szukany)-strlen($szukany));
-        $i++;
-    }
-    return $i;
+    //zad.1
+$tekst1 = "abcdabcd";
+$tekst2 = "abc";
+if(strpos($tekst1,$tekst2) === false){
+    echo "Ciag $tekst2 nie znajduje sie w ciagu $tekst1";
+} else{
+    echo "Ciag $tekst2 znajduje sie w ciagu $tekst1";
 }
 
+//*********************************************************************************
+//przetwarzanie ciagow znakow
 
-echo zliczaj("123123123123333", "123");*/
+echo "<br> <br>";
+    $zamien = str_replace("%imie%","Janusz","%imie% to nie imie, %imie% to styl zycia");
 
-$formularz= <<< FORM
-    <form method="post">
-        <input type="text" name="dane"><br>
-        <input type="submit" value="Wyślij">
-    </form>
+echo $zamien;
+echo "<br><br>";
+//*********************************************************************************
+$login = "Łukasz Bąk";
+$cenzura = array(
+"ą","ę","ć","ż","ź","ł","ó","ń","ś",
+"Ą","Ę","Ć","Ż","Ź","Ł","Ó","Ń","Ś",
+);
+
+$zamiana = array(
+"a","e","c","z","z","l","o","n","s",
+"A","E","C","Z","Z","L","O","N","s"
+);
+
+$poprawnyLogin = str_replace($cenzura,$zamiana,$login);
+
+echo $poprawnyLogin;
+echo "<br><br>";
+
+/*zad.dom.1
+Napisz program, ktory pozwoli cenzurowac zdanie popdane przez uzytkownika w formularzu*/
+
+/*zad.don.2
+Napisz funkcję, ktora bedzie obliczala wystapienia okreslonego ciagu znakow w danym tekscie. Tekst i szukany ciag znakow powinny byc przekazywane w postaci argumentow
+*/
+
+
+
+$formularz = <<< FORM
+<form method="post">
+    <input type="text" name="dane">
+    <input type="submit">
+</form>
 FORM;
-
 echo $formularz;
 
 if(isset($_POST['dane'])){
-    $dane=$_POST['dane'];
-    $niedozwolone = array("polonez", "multipla", "bmw");
-    $zamiana = "*****";
-    $poprawne = str_ireplace($niedozwolone, $zamiana, $dane);
-    echo $poprawne;
+    $dane = $_POST['dane'];
+    $niedozwolone = ['polonez','multipla','bmw'];
+    $zamiana = "#$@#$^^&*&";
+    $poprawne = str_ireplace($niedozwolone,$zamiana,$dane);
+    echo "<h1>$poprawne</h1>";
 }
 
 

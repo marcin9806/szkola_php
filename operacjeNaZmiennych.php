@@ -1,178 +1,172 @@
 <?php
-echo "<h1>DUPA</h1>";
+    //operatory
+    $potegowanie = 2**4; //16
+    $modulo = 11%3; //2
+    echo $modulo;
+   // +, -, *, /
+    //operatory bitowe
+        //and &, or , not ~,xor ^, przesuniecie bitowe w lewo <<,przesuniecie bitowe w prawo >>,
 
-//operatory
-$potegowanie=2**10; //1024
-echo $potegowanie, "<br>"; //2
-$reszta=11%3;
-echo $reszta, "<br>";
+    $dwadziescia = 0b10100;
+    echo $dwadziescia, '<br>';
+    $nowaLewo = $dwadziescia <<1;
+    echo $nowaLewo; //40
+    $nowaPrawo = $dwadziescia >> 1;
+    echo $nowaPrawo; // 10
 
-//operatory bitowe
-/*
-and &
-or |
-not ~
-xor ^
-przesunięcie bitowe w lewo <<
-przesunięcie bitowe w prawo >>*/
+    //operatory logiczne
+    //and, or, xor, !, &&, ||,
 
-$dwadziescia=0b10100;
-echo $dwadziescia."<br>";
-$nowaLewo=$dwadziescia<<1;// 010100 -> 101000
-echo $nowaLewo."<br>";
+//zadanie 1
+//Sprawdz czy w sklepie kupisz samochod
 
-$nowaPrawo=$dwadziescia>>1;// 010100 -> 001010
+$sklep = 'otwarty';
+$pieniadze = 1000000;
+$ferrari = true;
+if($sklep == 'otwarty' && $pieniadze > 1500000 && $ferrari){
+    echo 'Kupiłaś Ferrari';
+}else{
+    echo 'Nie kupiłaś Ferrari <br>';
+}
 
-//operatory logiczne
-/*and, or, xor, !, &&, ||*/
+//Zadanie2
+//Chcesz kupic w sklepie Ferrari lub BMW
+$BMW = false;
+$Ferrari = true;
 
-//sprawdź, czy w sklepie kupisz samochód
+if($BMW == true && $Ferrari == true){
+    echo "Kupuje dwa autka";
+} else if ($Ferrari == false){
+    echo "Kupuje BMW";
+}else if($Ferrari){
+    echo "Kupuje Ferrari";
+}
 
-    /*$sklep="otwarty";
-    $pieniadze=1000000;
-    $ferrari=true;
+$a =1;
+$b ='1';
 
-    if($sklep=="otwarty" && $pieniadze>1500000 && $ferrari) echo "Kupiłeś ferari";
-    else echo "Nie kupiłeś :(";*/
+if($a===$b){
+    echo '<br> a i b jest rowne<br>';
+}else {
+    echo '<br> a i b nie jest rowne<br>';
+}
 
-//chcesz kupić w sklepie ferrari lub BMW.
-
-    $sklep="otwarty";
-    $pieniadze=1500001;
-    $ferrari=true;
-    $BMW=false;
-
-    if($sklep=="otwarty" && $pieniadze>1500000 && ($ferrari || $BMW))
-        if($ferrari && $BMW) echo "Kupiłeś oba";
-        else
-            if($ferrari) echo "Kupiłeś Ferrari";
-            else echo "Kupiłeś BMW";
-    else echo "Nie kupiłeś nic";
-
-    echo "<br>";
-
-    $a=1;
-    $b=1;
-
-    if($a===$b) echo "A i B jest równe<br>";
-    else echo "A i B jest różne<br>";
-
-
-    $x=2;
-    echo $x; //2
-    echo ++$x; //3
-    echo $x; //3
-    $y=$x++;
-    echo $y; //3
-    $y=++$x;
-    echo $y; //5
-    echo ++$y; //6
-
-    echo "<br>";
-
+$x = 2;
+echo $x; //2
+echo ++$x; //3
+echo $x; //3
+$y=$x++;
+echo $y; //3
+$y=++$x;
+echo $y; //  5
+echo ++$y; //  6
+echo '<br>';
     //rozmiar typu integer
-    echo PHP_INT_SIZE."<br>"; //4
-
-
-//************************************************************************************
+    echo PHP_INT_SIZE;
 //kontrola typu zmiennych
-$test = "szkola";
-echo gettype($test)."<br>"; //string
 
-$x=10;
-echo gettype($x)."<br>"; //integer
+$test = 'szkola';
+$x = 10;
+$a = 22.0;
+$y = true;
+$z = null;
+echo gettype($test); //string
+echo gettype($x); //integer
+echo gettype($a); //integer double
+echo gettype($y); //bolean
+echo gettype($y); //bolean
+echo gettype($z); //NULL
+//echo gettype($w); //NULL
+echo @gettype($w); //bez errorka
+echo '<br>';
 
-$a=20.5;
-echo gettype($a)."<br>"; //double
-
-$z=null;
-echo gettype($z)."<br>"; //NULL
-
-$y=true;
-echo gettype($y)."<br>"; //boolean
-
-echo @gettype($w)."<br>"; //NULL
-
-echo is_string($test)."<br>"; //1 - true
-
-echo is_string($x)."<br>"; // "" - false
-
-echo is_bool($y)."<br>"; //true
-
-echo is_float($a)."<br>"; //true
-
-echo is_null($y)."<br>"; //true
-
-//***************************************************************************************
+echo is_string($test);
+echo is_string($x);
+echo is_bool($y);
+echo is_float($a);
+echo is_int($x);
+echo is_null($z);
+echo '<br>';
+//*****************************************************************
 //zmienne superglobalne
-//$_GET, $_POST, $_COOKIE, $_FILES, $_SESSION
+//$_GET, $_POST,$_COOKIE,$_FILES,$_SESSION
+echo $_SERVER['SERVER_PORT']; //80
+echo $_SERVER['SCRIPT_NAME']; ///4TB/operacjeNaZmiennych.php
+echo $_SERVER['SERVER_PROTOCOL']; //HTTP/1.1
+echo $_SERVER['DOCUMENT_ROOT']; //C:/xampp/htdocs
+$lokalizacjaPliku = $_SERVER['DOCUMENT_ROOT'].$_SERVER['SCRIPT_NAME'];
+echo '<br>',$lokalizacjaPliku;
 
-echo $_SERVER["SERVER_PORT"]."<br>";
-echo $_SERVER["SCRIPT_NAME"]."<br>";
-echo $_SERVER["SERVER_PROTOCOL"]."<br>";
-echo $_SERVER["DOCUMENT_ROOT"]."<br>";
-
-//***************************************************************************************
+//*******************************************************************
 //stałe
-//(nazwy z dużych liter)
+//nazwy z duzych liter!!
 
-define("NAZWISKO","Nowak");
-echo NAZWISKO."<br>";
+define('NAZWISKO','Nowak');
+echo '<br>',NAZWISKO;
 
-define("IMIE","Janusz");
-echo IMIE."<br>";
+define ('imie','Janusz');
+echo imie;
 
-define("WIEK",18,true); //true - nazwa nie sprawdza wielkości liter
-echo WIEK."<br>";
-echo wiek."<br>";
+define('WIEK',18,true);
+//echo WIEK;
+echo wiek;
 
-define("PI",3.14159265359);
-echo PI."<br>";
+define('PI',3.14);
+    echo PI,'<br>';
+
+//*****************
+//stałe prefefiniowane
+echo PHP_VERSION.'<br>';
+echo gettype(PHP_VERSION).'<br>';
+$ver = PHP_VERSION;
+
+if($ver > 5.6){
+    echo "Nowa wersja php";
+}else {
+    echo "stara wersja php";
+}
+
+echo PHP_OS; //WINNT
+echo '<br>',__LINE__; //130
+echo '<br>',__FILE__; //C:\xampp\htdocs\4TB\operacjeNaZmiennych.php
+echo '<br>',__DIR__; //C:\xampp\htdocs\4TB
 
 
-//***************************************************************************************
-//stałe predefiniowane
+//******************************************************************
+//operator konwersji (rzutowanie) typów
 
-echo PHP_VERSION."<br>";
-echo gettype(PHP_VERSION)."<br>";
+$x = 5.9;
+$y = 10.9;
+$z = 2;
+$j = -1;
+$c = 100;
+$text = 'wakacje';
 
-if(PHP_VERSION>=5.6) echo "Nowa wersja PHP<br>";
-else echo "Stara wersja PHP<br>";
+$x = (int)$x;
+echo '<br>'.$x.'<br>';
 
-echo PHP_OS."<br>";
-echo __LINE__."<br>";//numer linii
-echo __FILE__."<br>";//ścieżka pliku
-echo __DIR__."<br>";//folder
+$y = (float)$y;
+echo gettype($y).'<br>'; // double
 
-//**************************************************************************************
-//operator konwersji - rzutowanie typów
+echo gettype($z).'<br>';
+$z = (float)$z;
+echo gettype($z).'<br>'; //double
+echo $z.'<br>'; // 2
 
-$x=5.9;
-$x=(int)$x;
-echo $x."<br>";
+$j = (bool)$j;
+echo gettype($j); //boolean
+echo $j.'<br>'; //1
 
-$y=10;
-$y=(float)$y;
-echo gettype($y)."<br>";
 
-$z=2;
-$j= -1;
-$c=100;
-$tekst="wakacje";
+$c = (unset)$c;
+echo gettype($c);//NULL
+$c = 'jacek';
+echo $c; //jacek
+$text = (int)$text;
+echo $text; //0
 
-echo gettype($z)."<br>";
-$z=(float)$z;
-echo gettype($z)."<br>";
-echo $z."<br>";
-
-$j=(boolean)$j;
-echo gettype($j)."<br>";
-echo $j."<br>";
-
-$c=(unset)$c;
-echo gettype($c)."<br>";
-
-$tekst=(integer)$tekst;
-echo $tekst."<br>";
+//string,array
 
 ?>
+
+

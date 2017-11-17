@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Zajęcia2</title>
-    </head>
-    <body>
-        <?php //znacznik kanoniczny
-            echo '<h2 style="text-align: center;">';
-            echo 'Chadzia? Chadzia';
-            echo '</h2>';
-            include "../imie.php"; //przy bledzie dalsza czesc kodu bedzie realizowana
-            @include "../imie2.php"; //przy bledzie dalsza czesc kodu bedzie realizowana, nie wyswietli komunikatu o bledzie
-            echo "<br>tekst po błędzie<br>";
-            require "../imie.php"; //przy bledzie dalsza czesc kodu NIE bedzie realizowana, FATAL ERROR
-            echo "<br>tekst po błędzie<br>";
-        ?>
-    </body>
+<head>
+    <meta charset='utf-8'>
+    <title>PHP</title>
+</head>
+<body>
+<?php
+    echo "<h2 style='text-align:center'>";
+        echo "Witamy na stronie!";
+    echo "</h2>";
+    //include "../imie.php";
+    //include "../imie.php";
+    //@include "../imie.php"; i po błędzie przez @.
+
+    require "../imie.php";
+    echo "Tekst po błędzie";
+?>
+
+</body>
 </html>
