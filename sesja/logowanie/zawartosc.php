@@ -13,7 +13,6 @@ session_start();
     if(isset($_GET['logout'])) {session_destroy(); header("location: logowanie.php");}
     if(!isset($_SESSION['zalogowany_login'])) header("location: logowanie.php?msg=najpierwZaloguj");
     else $login=$_SESSION['zalogowany_login'];
-
     echo "Witaj $login!<br>";
     ?>
     <form><input type="submit" value="Wyloguj" name="logout">
