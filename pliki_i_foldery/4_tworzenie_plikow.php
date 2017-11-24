@@ -7,7 +7,11 @@
 <body>
     <form>
         Dodaj folder: <input type="text" name="folder">
-        <input type="submit" name="przycisk" value="Dodaj folder"><hr>
+        <input type="submit" name="przycisk" value="Dodaj folder"><br>
+    </form>
+    <form>
+        Dodaj plik: <input type="text" name="plik">
+        <input type="submit" name="przyciskP" value="Dodaj plik"><hr>
     </form>
     <?php
 
@@ -22,6 +26,17 @@
 
         if(!isset($_GET['sort'])) $pliki=scandir($dir,0);
         else $pliki=scandir($dir,$_GET['sort']);
+
+        if(isset($_GET["przyciskP"])&&!empty($_GET["plik"])){
+            $plik=$_GET["plik"];
+            if(!file_exists("../test/$plik")){
+                if($fd=@fopen("../test/$plik","w")){
+                    if(file_exists("../test/$plik")){
+                        echo"Dodano plik o nazwie $plik";
+                    }
+                }
+            }else echo "Plik już istnieje";
+        }
 
         if(isset($_GET["przycisk"]) && !empty($_GET["folder"])){
         $folder=$_GET["folder"];
@@ -54,16 +69,16 @@
         }
 
         foreach($foldery as $wartosc){
-            if($wartosc != "." && $wartosc != "..") echo "<li>".$wartosc."<a href=\"3_tworzenie_katalogow.php?usun=$wartosc\">Usuń</a><br>"."</li>";
+            if($wartosc != "." && $wartosc != "..") echo "<li>".$wartosc."<a href=\"4_tworzenie_plikow.php?usun=$wartosc\">Usuń</a><br>"."</li>";
         }
         foreach($pliki as $wartosc){
-            if($wartosc != "." && $wartosc != "..") echo "<li>".$wartosc."<a href=\"3_tworzenie_katalogow.php?usun=$wartosc\">Usuń</a><br>"."</li>";
+            if($wartosc != "." && $wartosc != "..") echo "<li>".$wartosc."<a href=\"4_tworzenie_plikow.php?usun=$wartosc\">Usuń</a><br>"."</li>";
         }
     ?>
     </ul>
     <?php
-        if(!isset($_GET['sort'])) echo "<a href=\"3_tworzenie_katalogow.php?sort=0\">Sortuj malejąco</a>";
-        else if($_GET['sort']==0) echo "<a href=\"3_tworzenie_katalogow.php?sort=1\">Sortuj roznąco</a>";
+        if(!isset($_GET['sort'])) echo "<a href=\"4_tworzenie_plikow.php?sort=0\">Sortuj malejąco</a>";
+        else if($_GET['sort']==0) echo "<a href=\"4_tworzenie_plikow.php?sort=1\">Sortuj roznąco</a>";
     ?>
 </body>
 </html>
